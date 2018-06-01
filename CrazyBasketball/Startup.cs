@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using CrazyBasketball.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CrazyBasketball.Services;
 
 namespace CrazyBasketball
 {
@@ -39,6 +40,8 @@ namespace CrazyBasketball
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<ITeamService, TeamService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

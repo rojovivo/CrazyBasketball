@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CrazyBasketball.Models;
 
 namespace CrazyBasketball.Data
 {
@@ -12,5 +13,9 @@ namespace CrazyBasketball.Data
             : base(options)
         {
         }
+
+        DbSet<Team> Teams { get; set; }
+
+        public DbSet<CrazyBasketball.Models.Team> Team { get; set; }
     }
 }
