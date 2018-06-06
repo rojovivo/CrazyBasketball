@@ -32,6 +32,24 @@ namespace CrazyBasketball.Data.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("CrazyBasketball.Models.Player", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Dorsal");
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid>("SeasonId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeasonId");
+
+                    b.ToTable("Players");
+                });
+
             modelBuilder.Entity("CrazyBasketball.Models.Season", b =>
                 {
                     b.Property<Guid>("Id")
@@ -230,6 +248,14 @@ namespace CrazyBasketball.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CrazyBasketball.Models.Player", b =>
+                {
+                    b.HasOne("CrazyBasketball.Models.Season", "Season")
+                        .WithMany()
+                        .HasForeignKey("SeasonId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CrazyBasketball.Models.Season", b =>
