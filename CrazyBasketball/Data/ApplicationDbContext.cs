@@ -14,8 +14,8 @@ namespace CrazyBasketball.Data
         {
         }
 
-        DbSet<Team> Teams { get; set; }
-
-        public DbSet<CrazyBasketball.Models.Team> Team { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Season> Seasons { get; set; }
+        
     }
 }
